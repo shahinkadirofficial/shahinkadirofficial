@@ -1,0 +1,181 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    filter: blur(35px); /* 35% blur */
+    z-index: -1; /* Ensure the overlay is behind other elements */
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* name.css */
+.names {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #000000;
+    font-family: 'Great Vibes', cursive;
+}
+
+.ampersand {
+    color: #FF0C00;
+    font-size: 24px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.name-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.name-text {
+    display: inline-block;
+    margin-right: 10px; 
+}
+
+/* photo.css */
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.image {
+    max-width: 130px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 1s forwards;
+}
+
+.center-heart {
+    position: absolute;
+}
+
+.heartbeat {
+    color: #FF0800;
+    font-size: 25px;
+    animation: heartbeat 3s infinite;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* quote.css */
+.quote-container {
+    text-align: center;
+    padding: 5px;
+}
+
+#quote {
+    font-size: 13px;
+    color: #000000;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+/* relation-text.css */
+.relation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.textline-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.line {
+    height: 1px;
+    width: 50px;
+    background-color: #000000;
+}
+
+.line-text {
+    padding: 0 10px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* time.css */
+.countup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
+}
+
+.countup-box {
+    text-align: center;
+    margin: 5px;
+}
+
+.countup-label {
+    font-size: 14px;
+    color: #000000;
+}
+
+.countup-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff0000; 
+}
+
+.wbt {
+    display: flex;
+    font-size: 13px;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.date {
+    font-family: "Arial", sans-serif;
+    padding-left: 10px; 
+    padding-right: 10px; 
+}
+
+.date {
+    color: red;
+}
