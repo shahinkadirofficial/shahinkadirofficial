@@ -5,87 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
-
-
-        /* Background photo with blur effect */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Background photo container */
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-image: url('your-background-photo.jpg'); /* Replace with your image */
-    background-size: cover;
-    background-position: center;
-    filter: blur(10px);
-    opacity: 0.7; /* Slightly darken the background for better contrast */
-}
-
-/* Main content styling */
-.content {
-    position: relative;
-    z-index: 1;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    max-width: 90%;
-    margin: 10px;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin-bottom: 20px;
-}
-
+/* Container for each photo and frame */
 .photo-frame {
     position: relative;
-    width: 300px; /* Size of the frame */
+    width: 300px; /* Default frame size for desktop */
     height: 300px;
     margin: 0 20px;
 }
 
-.photo, .frame {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
+/* Frame styling */
 .frame {
-    width: 150%;
-    height: 150%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     z-index: 2;
 }
 
+/* Photo styling - smaller than the frame */
 .photo {
-    width: 50%; /* Smaller than the frame */
-    height: 50%;
-    top: 15%; /* Centers the photo within the frame */
-    left: 15%;
+    position: absolute;
+    width: 60%; /* Smaller than the frame */
+    height: 60%;
+    top: 20%; /* Centers the photo vertically within the frame */
+    left: 20%; /* Centers the photo horizontally within the frame */
     border-radius: 50%;
     object-fit: cover;
     z-index: 1;
 }
 
+/* Heartbeat emoji styling */
 .heartbeat {
     font-size: 40px;
     margin: 0 15px;
@@ -94,122 +42,18 @@ body {
     align-self: center;
 }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
-
-.name-container {
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
-}
-
-.names {
-    font-size: 28px;
-    font-weight: bold;
-    color: #333;
-    font-family: 'Great Vibes', cursive;
-}
-
-.ampersand {
-    color: #FF0C00;
-    font-size: 28px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.relation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-}
-
-.textline-container {
-    display: flex;
-    align-items: center;
-    margin: 8px 0;
-}
-
-.line {
-    height: 1px;
-    width: 50px;
-    background-color: #333;
-}
-
-.line-text {
-    padding: 0 10px;
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.wbt {
-    display: flex;
-    font-size: 14px;
-    color: #333;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.date {
-    font-family: "Arial", sans-serif;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: red;
-}
-
-.countup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
-}
-
-.countup-box {
-    text-align: center;
-    margin: 5px;
-}
-
-.countup-label {
-    font-size: 15px;
-    color: #333;
-}
-
-.countup-value {
-    font-size: 22px;
-    font-weight: bold;
-    color: #FF0000;
-}
-
-.quote-container {
-    text-align: center;
-    padding: 10px;
-    margin-top: 15px;
-}
-
-#quote {
-    font-size: 14px;
-    color: #333;
-    font-family: 'Courier New', monospace;
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .photo-frame {
-        width: 180px;
-        height: 180px;
-        margin: 0 10px;
+        width: 240px; /* Adjusted frame size for tablets */
+        height: 240px;
     }
 
     .photo {
-        width: 70%; 
-        height: 70%;
-        top: 15%;
-        left: 15%;
+        width: 65%; /* Slightly larger photo within a smaller frame */
+        height: 65%;
+        top: 17.5%; /* Adjusted to keep photo centered */
+        left: 17.5%;
     }
 
     .heartbeat {
@@ -224,14 +68,14 @@ body {
 
 @media (max-width: 480px) {
     .photo-frame {
-        width: 150px;
-        height: 150px;
+        width: 200px; /* Smaller frame size for mobile phones */
+        height: 200px;
     }
 
     .photo {
-        width: 70%; 
+        width: 70%; /* Slightly larger photo within a smaller frame */
         height: 70%;
-        top: 15%;
+        top: 15%; /* Adjusted to keep photo centered */
         left: 15%;
     }
 
@@ -243,8 +87,31 @@ body {
     .names {
         font-size: 22px;
     }
+}
+
+/* Further adjustments for very small screens (e.g., smaller than 360px wide) */
+@media (max-width: 360px) {
+    .photo-frame {
+        width: 160px; /* Further reduced frame size */
+        height: 160px;
     }
-    </style>
+
+    .photo {
+        width: 75%; /* Larger photo relative to frame */
+        height: 75%;
+        top: 12.5%;
+        left: 12.5%;
+    }
+
+    .heartbeat {
+        font-size: 20px;
+        margin: 0 3px;
+    }
+
+    .names {
+        font-size: 20px;
+    }
+}    </style>
 </head>
 <body>
 
