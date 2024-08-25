@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
-        /* Basic body styling for centering */
         body {
             display: flex;
             justify-content: center;
@@ -15,212 +14,186 @@
             margin: 0;
         }
 
-        /* Container to hold the photos and emoji */
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             padding: 10px;
-            flex-direction: row;
         }
 
-        /* Photo frame styling */
+        .photo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
         .photo-frame {
             position: relative;
-            width: 250px; /* Base frame size */
+            width: 250px;
             height: 250px;
-            margin: 0 20px; /* Space around the frames and emoji */
+            margin: 0 20px;
         }
 
-        /* Frame styling */
         .frame {
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 2; /* Frame above the photo */
+            z-index: 2;
         }
 
-        /* Photo styling (behind the frame) */
         .photo {
             position: absolute;
-            width: 50%; /* Smaller than the frame */
+            width: 50%;
             height: 50%;
-            top: 25%; /* Centering the photo within the frame */
+            top: 25%;
             left: 25%;
-            border-radius: 50%; /* Circular photo */
-            z-index: 1; /* Photo below the frame */
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        /* Love emoji styling */
-        .emoji {
-            font-size: 40px; /* Base emoji size */
-            margin: 0 15px;
+        .heartbeat {
+            color: #FF0800;
+            font-size: 25px;
+            animation: heartbeat 3s infinite;
         }
 
-        /* Responsive adjustments */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .name-container,
+        .relation-container,
+        .countup,
+        .quote-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .names {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .ampersand {
+            color: #FF0C00;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .textline-container {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .line {
+            height: 1px;
+            width: 50px;
+            background-color: #000000;
+        }
+
+        .line-text {
+            padding: 0 10px;
+            font-size: 15px;
+            cursor: pointer;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .countup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
+        }
+
+        .countup-box {
+            text-align: center;
+            margin: 5px;
+        }
+
+        .countup-label {
+            font-size: 14px;
+            color: #000000;
+        }
+
+        .countup-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .wbt {
+            display: flex;
+            font-size: 13px;
+            color: #000000;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        .date {
+            font-family: "Arial", sans-serif;
+            padding: 0 10px;
+            color: red;
+        }
+
+        #quote {
+            font-size: 13px;
+            color: #000000;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
         @media (max-width: 768px) {
             .photo-frame {
-                width: 180px; /* Smaller frame size for mobile */
+                width: 180px;
                 height: 180px;
                 margin: 0 10px;
             }
 
-            .emoji {
-                font-size: 30px; /* Smaller emoji for mobile */
-                margin: 0 10px;
+            .heartbeat {
+                font-size: 30px;
             }
         }
 
         @media (max-width: 480px) {
             .photo-frame {
-                width: 150px; /* Further reduced frame size for very small screens */
+                width: 150px;
                 height: 150px;
             }
 
-            .emoji {
-                font-size: 24px; /* Adjusted emoji size */
-                margin: 0 5px;
+            .heartbeat {
+                font-size: 24px;
             }
         }
-
-
-.names {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    color: #000000;
-    font-family: 'Great Vibes', cursive;
-}
-
-.ampersand {
-    color: #FF0C00;
-    font-size: 24px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.name-container {
-    text-align: center;
-    margin-top: 20px;
-}
-
-
-.center-heart {
-    position: absolute;
-}
-
-.heartbeat {
-    color: #FF0800;
-    font-size: 25px;
-    animation: heartbeat 3s infinite;
-}
-
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
-
-.quote-container {
-    text-align: center;
-    padding: 5px;
-}
-
-#quote {
-    font-size: 13px;
-    color: #000000;
-    margin-top: 10px;
-    font-family: 'Courier New', monospace;
-}
-
-.relation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.textline-container {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
-
-.line {
-    height: 1px;
-    width: 50px;
-    background-color: #000000;
-}
-
-.line-text {
-    padding: 0 10px;
-    font-size: 15px;
-    cursor: pointer;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.countup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-    font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
-}
-
-.countup-box {
-    text-align: center;
-    margin: 5px;
-}
-
-.countup-label {
-    font-size: 14px;
-    color: #000000;
-}
-
-.countup-value {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff0000;
-}
-
-.wbt {
-    display: flex;
-    font-size: 13px;
-    color: #000000;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.date {
-    font-family: "Arial", sans-serif;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: red;
-}
     </style>
 </head>
 <body>
-
     <div class="container">
-        <div class="photo-frame">
-            <img src="king.jpg" alt="King Photo" class="photo">
-            <img src="frame.png" alt="Photo Frame" class="frame">
+        <div class="photo-container">
+            <div class="photo-frame">
+                <img src="king.jpg" alt="King Photo" class="photo">
+                <img src="frame.png" alt="Photo Frame" class="frame">
+            </div>
+            <div class="heartbeat">♡</div>
+            <div class="photo-frame">
+                <img src="queen.jpg" alt="Queen Photo" class="photo">
+                <img src="frame.png" alt="Photo Frame" class="frame">
+            </div>
         </div>
 
-        <div class="heartbeat">♡</div>
-
-        <div class="photo-frame">
-            <img src="queen.jpg" alt="Queen Photo" class="photo">
-            <img src="frame.png" alt="Photo Frame" class="frame">
-        </div>
-    </div>
-
-
-<div class="name-container">
+        <div class="name-container">
             <div class="names">King<span class="ampersand">&</span>Queen</div>
         </div>
+
         <div class="relation-container">
             <div class="textline-container">
                 <div class="line"></div>
@@ -228,7 +201,9 @@
                 <div class="line"></div>
             </div>
         </div>
+
         <div class="wbt">Since:<span class="date">28 August 2014</span>We have been together for</div>
+
         <div class="countup">
             <div class="countup-box">
                 <div class="countup-label">Years</div>
@@ -255,6 +230,7 @@
                 <div class="countup-value" id="seconds">0</div>
             </div>
         </div>
+
         <div class="quote-container">
             <div id="quote"></div>
         </div>
@@ -262,11 +238,5 @@
 
     <script src="time.js"></script>
     <script src="quotes.js"></script>
-    <script>
-        function submitForm() {
-            document.getElementById("editProfileForm").submit();
-        }
-    </script>
-
 </body>
 </html>
