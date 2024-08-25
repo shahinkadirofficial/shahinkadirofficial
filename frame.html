@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
-       /* Background photo with blur effect */
+
+
+        /* Background photo with blur effect */
 body {
     margin: 0;
     padding: 0;
@@ -57,7 +59,7 @@ body {
 
 .photo-frame {
     position: relative;
-    width: 250px; /* Previous frame size */
+    width: 250px; /* Size of the frame */
     height: 250px;
     margin: 0 20px;
 }
@@ -66,18 +68,22 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.photo {
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 1;
 }
 
 .frame {
+    width: 100%;
+    height: 100%;
     z-index: 2;
+}
+
+.photo {
+    width: 70%; /* Smaller than the frame */
+    height: 70%;
+    top: 15%; /* Centers the photo within the frame */
+    left: 15%;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .heartbeat {
@@ -194,9 +200,16 @@ body {
 
 @media (max-width: 768px) {
     .photo-frame {
-        width: 250px;
-        height: 250px;
+        width: 180px;
+        height: 180px;
         margin: 0 10px;
+    }
+
+    .photo {
+        width: 70%; 
+        height: 70%;
+        top: 15%;
+        left: 15%;
     }
 
     .heartbeat {
@@ -211,8 +224,15 @@ body {
 
 @media (max-width: 480px) {
     .photo-frame {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .photo {
+        width: 70%; 
+        height: 70%;
+        top: 15%;
+        left: 15%;
     }
 
     .heartbeat {
@@ -223,7 +243,7 @@ body {
     .names {
         font-size: 22px;
     }
-}
+    }
     </style>
 </head>
 <body>
