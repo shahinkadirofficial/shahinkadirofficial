@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,263 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
 
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') no-repeat center center/cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
 
+        .main-container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
 
-/* Basic body styling for centering */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-}
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
 
-/* Blurred background image */
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('background.jpg') no-repeat center center/cover;
-    filter: blur(10px);
-    z-index: -1;
-}
+        .photo-frame {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 10px;
+        }
 
-/* Main container */
-.main-container {
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
+        .frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
 
-/* Container to hold the photos and emoji */
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    margin-bottom: 20px;
-}
+        .photo {
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 1;
+        }
 
-/* Container for each photo and frame */
-.photo-frame {
-    position: relative;
-    width: 300px; /* Default frame size for desktop */
-    height: 300px;
-    margin: 0 20px;
-}
+        .heartbeat {
+            font-size: 30px;
+            margin: 0 5px;
+            color: #FF0800;
+            animation: heartbeat 3s infinite;
+            align-self: center;
+        }
 
-/* Frame styling */
-.frame {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-}
+        .names {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFFFFF;
+            font-family: 'Great Vibes', cursive;
+        }
 
-/* Photo styling - smaller than the frame */
-.photo {
-    position: absolute;
-    width: 50%; /* Smaller than the frame */
-    height: 0%;
-    top: 25%; /* Centers the photo vertically within the frame */
-    left: 25%; /* Centers the photo horizontally within the frame */
-    border-radius: 50%;
-    object-fit: cover;
-    z-index: 1;
-}
+        .ampersand {
+            color: #FF0C00;
+            font-size: 24px;
+            margin-right: 5px;
+            margin-left: 5px;
+        }
 
-/* Heartbeat emoji styling */
-.heartbeat {
-    font-size: 40px;
-    margin: 0 15px;
-    color: #FF0800;
-    animation: heartbeat 3s infinite;
-    align-self: center;
-}
+        .relation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
 
-/* Name section */
-.names {
-    font-size: 32px;
-    font-weight: bold;
-    color: #FFFFFF;
-    align-self: center;
-    font-family: 'Great Vibes', cursive;
-}
+        .textline-container {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
 
-/* Ampersand styling */
-.ampersand {
-    color: #FF0C00;
-    font-size: 32px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
+        .line {
+            height: 1px;
+            width: 50px;
+            background-color: #FFFFFF;
+        }
 
-/* Relation container styling */
-.relation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-}
+        .line-text {
+            padding: 0 10px;
+            font-size: 16px;
+            color: #FFFFFF;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
 
-/* Line styling */
-.textline-container {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
+        .countup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
+        }
 
-.line {
-    height: 1px;
-    width: 50px;
-    background-color: #FFFFFF;
-}
+        .countup-box {
+            text-align: center;
+            margin: 5px;
+        }
 
-.line-text {
-    padding: 0 10px;
-    font-size: 18px;
-    color: #FFFFFF;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+        .countup-label {
+            font-size: 12px;
+            color: #FFFFFF;
+        }
 
-/* Count-up box styling */
-.countup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-    font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
-}
+        .countup-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF0000;
+        }
 
-.countup-box {
-    text-align: center;
-    margin: 5px;
-}
+        .wbt {
+            display: flex;
+            font-size: 12px;
+            color: #FFFFFF;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+        }
 
-.countup-label {
-    font-size: 14px;
-    color: #FFFFFF;
-}
+        .date {
+            padding-left: 10px;
+            padding-right: 10px;
+            color: #FF0000;
+        }
 
-.countup-value {
-    font-size: 20px;
-    font-weight: bold;
-    color: #FF0000;
-}
-
-/* WBT (We have been together) styling */
-.wbt {
-    display: flex;
-    font-size: 14px;
-    color: #FFFFFF;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.date {
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #FF0000;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .photo-frame {
-        width: 240px; /* Adjusted frame size for tablets */
-        height: 240px;
-    }
-
-    .photo {
-        width: 65%; /* Slightly larger photo within a smaller frame */
-        height: 65%;
-        top: 17.5%; /* Adjusted to keep photo centered */
-        left: 17.5%;
-    }
-
-    .heartbeat {
-        font-size: 30px;
-        margin: 0 10px;
-    }
-
-    .names {
-        font-size: 28px;
-    }
-}
-
-@media (max-width: 480px) {
-    .photo-frame {
-        width: 200px; /* Smaller frame size for mobile phones */
-        height: 200px;
-    }
-
-    .photo {
-        width: 70%; /* Slightly larger photo within a smaller frame */
-        height: 70%;
-        top: 15%; /* Adjusted to keep photo centered */
-        left: 15%;
-    }
-
-    .heartbeat {
-        font-size: 24px;
-        margin: 0 5px;
-    }
-
-    .names {
-        font-size: 24px;
-    }
-}
-
-/* Further adjustments for very small screens (e.g., smaller than 360px wide) */
-@media (max-width: 360px) {
-    .photo-frame {
-        width: 160px; /* Further reduced frame size */
-        height: 160px;
-    }
-
-    .photo {
-        width: 75%; /* Larger photo relative to frame */
-        height: 75%;
-        top: 12.5%;
-        left: 12.5%;
-    }
-
-    .heartbeat {
-        font-size: 20px;
-        margin: 0 3px;
-    }
-
-    .names {
-        font-size: 20px;
-    }
-}
-
-/* Heartbeat animation keyframes */
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-    }
-
-
-        
-
-        
-</style>
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Background with blur effect -->
-    <div class="background"></div>
-
-    <!-- Main content -->
-    <div class="content">
-        <!-- Photo Frames and Emoji Section -->
+    <div class="main-container">
         <div class="container">
             <div class="photo-frame">
                 <img src="king.jpg" alt="King Photo" class="photo">
@@ -277,12 +179,10 @@ body::before {
             </div>
         </div>
 
-        <!-- Name Section -->
         <div class="name-container">
             <div class="names">King<span class="ampersand">&</span>Queen</div>
         </div>
 
-        <!-- Relationship Section -->
         <div class="relation-container">
             <div class="textline-container">
                 <div class="line"></div>
@@ -291,8 +191,8 @@ body::before {
             </div>
         </div>
 
-        <!-- Since Date and Countup Section -->
         <div class="wbt">Since:<span class="date">28 August 2014</span>We have been together for</div>
+
         <div class="countup">
             <div class="countup-box">
                 <div class="countup-label">Years</div>
@@ -319,16 +219,9 @@ body::before {
                 <div class="countup-value" id="seconds">0</div>
             </div>
         </div>
-
-        <!-- Quote Section -->
-        <div class="quote-container">
-            <div id="quote"></div>
-        </div>
     </div>
 
-    <!-- Scripts -->
     <script src="time.js"></script>
     <script src="quotes.js"></script>
-
 </body>
 </html>
