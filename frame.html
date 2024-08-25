@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
-        /* Resetting margins and setting background color */
+        /* Basic body styling for centering */
         body {
             display: flex;
             justify-content: center;
@@ -15,73 +15,71 @@
             margin: 0;
         }
 
-        /* Main container for centering the content */
+        /* Container to hold the photos and emoji */
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: row;
             padding: 10px;
+            flex-direction: row;
         }
 
-        /* Styling for each photo frame */
+        /* Photo frame styling */
         .photo-frame {
             position: relative;
-            width: 250px; /* Base size for larger screens */
+            width: 250px; /* Base frame size */
             height: 250px;
-            margin: 0 20px;
+            margin: 0 20px; /* Space around the frames and emoji */
         }
 
-        /* Responsive frame and photo size */
-        .frame, .photo {
+        /* Frame styling */
+        .frame {
             position: absolute;
             width: 100%;
             height: 100%;
-            border-radius: 50%;
-            z-index: 1;
+            z-index: 2; /* Frame above the photo */
         }
 
-        /* Ensuring the photo is smaller and centered within the frame */
+        /* Photo styling (behind the frame) */
         .photo {
-            width: 70%; /* Reduced size to better fit within the frame */
+            position: absolute;
+            width: 70%; /* Smaller than the frame */
             height: 70%;
-            top: 15%;
+            top: 15%; /* Centering the photo within the frame */
             left: 15%;
-            z-index: 2;
+            border-radius: 50%; /* Circular photo */
+            z-index: 1; /* Photo below the frame */
         }
 
-        /* Styling for the heart emoji */
+        /* Love emoji styling */
         .emoji {
-            font-size: 40px; /* Base size */
+            font-size: 40px; /* Base emoji size */
             margin: 0 15px;
         }
 
-        /* Responsive design adjustments */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
             .photo-frame {
                 width: 180px; /* Smaller frame size for mobile */
                 height: 180px;
-                margin: 10px 0;
+                margin: 0 10px;
             }
 
             .emoji {
                 font-size: 30px; /* Smaller emoji for mobile */
-                margin: 10px 0;
+                margin: 0 10px;
             }
         }
 
         @media (max-width: 480px) {
             .photo-frame {
-                width: 150px; /* Even smaller size for very small screens */
+                width: 150px; /* Further reduced frame size for very small screens */
                 height: 150px;
             }
 
             .emoji {
-                font-size: 24px; /* Adjusting emoji size */
+                font-size: 24px; /* Adjusted emoji size */
+                margin: 0 5px;
             }
         }
     </style>
