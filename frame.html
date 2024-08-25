@@ -8,11 +8,13 @@
         /* Basic body styling for centering */
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
+            padding: 20px;
         }
 
         /* Container to hold the photos and emoji */
@@ -52,9 +54,17 @@
         }
 
         /* Love emoji styling */
-        .emoji {
+        .heartbeat {
             font-size: 40px; /* Base emoji size */
             margin: 0 15px;
+            color: #FF0800;
+            animation: heartbeat 3s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
         /* Responsive adjustments */
@@ -65,7 +75,7 @@
                 margin: 0 10px;
             }
 
-            .emoji {
+            .heartbeat {
                 font-size: 30px; /* Smaller emoji for mobile */
                 margin: 0 10px;
             }
@@ -77,132 +87,116 @@
                 height: 150px;
             }
 
-            .emoji {
+            .heartbeat {
                 font-size: 24px; /* Adjusted emoji size */
                 margin: 0 5px;
             }
         }
 
+        /* Name and relationship sections */
+        .name-container {
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.names {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    color: #000000;
-    font-family: 'Great Vibes', cursive;
-}
+        .names {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            font-family: 'Great Vibes', cursive;
+        }
 
-.ampersand {
-    color: #FF0C00;
-    font-size: 24px;
-    margin-right: 10px;
-    margin-left: 10px;
-}
+        .ampersand {
+            color: #FF0C00;
+            font-size: 24px;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
 
-.name-container {
-    text-align: center;
-    margin-top: 20px;
-}
+        .relation-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+        }
 
+        .textline-container {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
 
-.center-heart {
-    position: absolute;
-}
+        .line {
+            height: 1px;
+            width: 50px;
+            background-color: #000000;
+        }
 
-.heartbeat {
-    color: #FF0800;
-    font-size: 25px;
-    animation: heartbeat 3s infinite;
-}
+        .line-text {
+            padding: 0 10px;
+            font-size: 15px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
 
-@keyframes heartbeat {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.3); }
-    100% { transform: scale(1); }
-}
+        /* Since date and countup section */
+        .wbt {
+            display: flex;
+            font-size: 13px;
+            color: #000000;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            font-family: "Times New Roman", Times, serif;
+        }
 
-.quote-container {
-    text-align: center;
-    padding: 5px;
-}
+        .date {
+            font-family: "Arial", sans-serif;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: red;
+        }
 
-#quote {
-    font-size: 13px;
-    color: #000000;
-    margin-top: 10px;
-    font-family: 'Courier New', monospace;
-}
+        .countup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;
+            font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
+        }
 
-.relation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-}
+        .countup-box {
+            text-align: center;
+            margin: 5px;
+        }
 
-.textline-container {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
+        .countup-label {
+            font-size: 14px;
+            color: #000000;
+        }
 
-.line {
-    height: 1px;
-    width: 50px;
-    background-color: #000000;
-}
+        .countup-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff0000;
+        }
 
-.line-text {
-    padding: 0 10px;
-    font-size: 15px;
-    cursor: pointer;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
+        /* Quote section */
+        .quote-container {
+            text-align: center;
+            padding: 5px;
+        }
 
-.countup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-    font-family: "Lucida Console", "Menlo", "Monaco", "Courier", monospace;
-}
-
-.countup-box {
-    text-align: center;
-    margin: 5px;
-}
-
-.countup-label {
-    font-size: 14px;
-    color: #000000;
-}
-
-.countup-value {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff0000;
-}
-
-.wbt {
-    display: flex;
-    font-size: 13px;
-    color: #000000;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5px;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.date {
-    font-family: "Arial", sans-serif;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: red;
-}
+        #quote {
+            font-size: 13px;
+            color: #000000;
+            margin-top: 10px;
+            font-family: 'Courier New', monospace;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Photo Frames and Emoji Section -->
     <div class="container">
         <div class="photo-frame">
             <img src="king.jpg" alt="King Photo" class="photo">
@@ -217,56 +211,57 @@
         </div>
     </div>
 
+    <!-- Name Section -->
+    <div class="name-container">
+        <div class="names">King<span class="ampersand">&</span>Queen</div>
+    </div>
 
-<div class="name-container">
-            <div class="names">King<span class="ampersand">&</span>Queen</div>
-        </div>
-        <div class="relation-container">
-            <div class="textline-container">
-                <div class="line"></div>
-                <div class="line-text">Married</div>
-                <div class="line"></div>
-            </div>
-        </div>
-        <div class="wbt">Since:<span class="date">28 August 2014</span>We have been together for</div>
-        <div class="countup">
-            <div class="countup-box">
-                <div class="countup-label">Years</div>
-                <div class="countup-value" id="years">0</div>
-            </div>
-            <div class="countup-box">
-                <div class="countup-label">Months</div>
-                <div class="countup-value" id="months">0</div>
-            </div>
-            <div class="countup-box">
-                <div class="countup-label">Days</div>
-                <div class="countup-value" id="days">0</div>
-            </div>
-            <div class="countup-box">
-                <div class="countup-label">Hours</div>
-                <div class="countup-value" id="hours">0</div>
-            </div>
-            <div class="countup-box">
-                <div class="countup-label">Minutes</div>
-                <div class="countup-value" id="minutes">0</div>
-            </div>
-            <div class="countup-box">
-                <div class="countup-label">Seconds</div>
-                <div class="countup-value" id="seconds">0</div>
-            </div>
-        </div>
-        <div class="quote-container">
-            <div id="quote"></div>
+    <!-- Relationship Section -->
+    <div class="relation-container">
+        <div class="textline-container">
+            <div class="line"></div>
+            <div class="line-text">Married</div>
+            <div class="line"></div>
         </div>
     </div>
 
+    <!-- Since Date and Countup Section -->
+    <div class="wbt">Since:<span class="date">28 August 2014</span>We have been together for</div>
+    <div class="countup">
+        <div class="countup-box">
+            <div class="countup-label">Years</div>
+            <div class="countup-value" id="years">0</div>
+        </div>
+        <div class="countup-box">
+            <div class="countup-label">Months</div>
+            <div class="countup-value" id="months">0</div>
+        </div>
+        <div class="countup-box">
+            <div class="countup-label">Days</div>
+            <div class="countup-value" id="days">0</div>
+        </div>
+        <div class="countup-box">
+            <div class="countup-label">Hours</div>
+            <div class="countup-value" id="hours">0</div>
+        </div>
+        <div class="countup-box">
+            <div class="countup-label">Minutes</div>
+            <div class="countup-value" id="minutes">0</div>
+        </div>
+        <div class="countup-box">
+            <div class="countup-label">Seconds</div>
+            <div class="countup-value" id="seconds">0</div>
+        </div>
+    </div>
+
+    <!-- Quote Section -->
+    <div class="quote-container">
+        <div id="quote"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="time.js"></script>
     <script src="quotes.js"></script>
-    <script>
-        function submitForm() {
-            document.getElementById("editProfileForm").submit();
-        }
-    </script>
 
 </body>
 </html>
