@@ -9,10 +9,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             font-family: 'Arial', sans-serif;
             background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
         }
 
         body::before {
@@ -33,7 +35,7 @@
             z-index: 1;
             width: 100%;
             max-width: 480px;
-            margin: 0 auto;
+            margin: auto;
         }
 
         .container {
@@ -46,8 +48,8 @@
 
         .photo-frame {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             margin: 0 10px;
         }
 
