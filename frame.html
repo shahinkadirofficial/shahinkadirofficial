@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
-        /* Centering the content on the page */
+        /* Resetting margins and setting background color */
         body {
             display: flex;
             justify-content: center;
@@ -15,44 +15,73 @@
             margin: 0;
         }
 
-        /* Container to hold the entire photo and frame structure, centered horizontally and vertically */
+        /* Main container for centering the content */
         .container {
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: row;
+            padding: 10px;
         }
 
-        /* Container for each photo with its frame */
+        /* Styling for each photo frame */
         .photo-frame {
             position: relative;
-            width: 300px; /* Increased size of the frame */
-            height: 300px;
-            margin: 0 30px; /* Space between the frames and the emoji */
+            width: 250px; /* Base size for larger screens */
+            height: 250px;
+            margin: 0 20px;
         }
 
-        /* Frame styling */
-        .frame {
+        /* Responsive frame and photo size */
+        .frame, .photo {
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 2; /* Frame above the photo */
+            border-radius: 50%;
         }
 
-        /* Photo styling (smaller than the frame) */
+        /* Ensuring the photo is smaller and centered within the frame */
         .photo {
-            position: absolute;
-            width: 50%; /* Smaller than the frame */
-            height: 50%;
-            top: 25%; /* Centering the photo within the frame */
-            left: 25%;
-            border-radius: 50%; /* Circular photo */
-            z-index: 1; /* Photo below the frame */
+            width: 70%; /* Reduced size to better fit within the frame */
+            height: 70%;
+            top: 15%;
+            left: 15%;
+            z-index: 1;
         }
 
-        /* Love emoji styling */
+        /* Styling for the heart emoji */
         .emoji {
-            font-size: 60px; /* Larger size of the emoji */
-            margin: 0 20px; /* Spacing on either side of the emoji */
+            font-size: 40px; /* Base size */
+            margin: 0 15px;
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .photo-frame {
+                width: 180px; /* Smaller frame size for mobile */
+                height: 180px;
+                margin: 10px 0;
+            }
+
+            .emoji {
+                font-size: 30px; /* Smaller emoji for mobile */
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-frame {
+                width: 150px; /* Even smaller size for very small screens */
+                height: 150px;
+            }
+
+            .emoji {
+                font-size: 24px; /* Adjusting emoji size */
+            }
         }
     </style>
 </head>
