@@ -59,13 +59,16 @@
             align-items: center;
             justify-content: center;
             margin: 0 10px;
+            border-radius: 50%; /* Adjust as needed */
         }
 
         .photo {
+            position: absolute;
             width: 80%;
             height: 80%;
             border-radius: 50%;
             object-fit: cover;
+            z-index: 1; /* Ensure photo is behind the frame */
         }
 
         .heartbeat {
@@ -80,6 +83,7 @@
             font-weight: bold;
             color: #FFFFFF;
             font-family: 'Great Vibes', cursive;
+            margin-top: 20px;
         }
 
         .ampersand {
