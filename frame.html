@@ -5,19 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framed Photos</title>
     <style>
-        /* Basic body styling for centering */
+        /* Background photo with blur effect */
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
 
-        /* Container to hold the photos and emoji */
+        /* Background photo container */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('background.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px);
+        }
+
+        /* Main content styling */
+        .content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8); /* Optional: adds a semi-transparent background to the content */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
         .container {
             display: flex;
             align-items: center;
@@ -26,36 +51,32 @@
             flex-direction: row;
         }
 
-        /* Photo frame styling */
         .photo-frame {
             position: relative;
-            width: 250px; /* Base frame size */
+            width: 250px;
             height: 250px;
-            margin: 0 20px; /* Space around the frames and emoji */
+            margin: 0 20px;
         }
 
-        /* Frame styling */
         .frame {
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 2; /* Frame above the photo */
+            z-index: 2;
         }
 
-        /* Photo styling (behind the frame) */
         .photo {
             position: absolute;
-            width: 50%; /* Smaller than the frame */
+            width: 50%;
             height: 50%;
-            top: 25%; /* Centering the photo within the frame */
+            top: 25%;
             left: 25%;
-            border-radius: 50%; /* Circular photo */
-            z-index: 1; /* Photo below the frame */
+            border-radius: 50%;
+            z-index: 1;
         }
 
-        /* Love emoji styling */
         .heartbeat {
-            font-size: 40px; /* Base emoji size */
+            font-size: 40px;
             margin: 0 15px;
             color: #FF0800;
             animation: heartbeat 3s infinite;
@@ -67,33 +88,6 @@
             100% { transform: scale(1); }
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .photo-frame {
-                width: 180px; /* Smaller frame size for mobile */
-                height: 180px;
-                margin: 0 10px;
-            }
-
-            .heartbeat {
-                font-size: 30px; /* Smaller emoji for mobile */
-                margin: 0 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .photo-frame {
-                width: 150px; /* Further reduced frame size for very small screens */
-                height: 150px;
-            }
-
-            .heartbeat {
-                font-size: 24px; /* Adjusted emoji size */
-                margin: 0 5px;
-            }
-        }
-
-        /* Name and relationship sections */
         .name-container {
             text-align: center;
             margin-top: 20px;
@@ -138,7 +132,6 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
-        /* Since date and countup section */
         .wbt {
             display: flex;
             font-size: 13px;
@@ -180,7 +173,6 @@
             color: #ff0000;
         }
 
-        /* Quote section */
         .quote-container {
             text-align: center;
             padding: 5px;
@@ -192,71 +184,102 @@
             margin-top: 10px;
             font-family: 'Courier New', monospace;
         }
+
+        @media (max-width: 768px) {
+            .photo-frame {
+                width: 180px;
+                height: 180px;
+                margin: 0 10px;
+            }
+
+            .heartbeat {
+                font-size: 30px;
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+
+            .heartbeat {
+                font-size: 24px;
+                margin: 0 5px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Photo Frames and Emoji Section -->
-    <div class="container">
-        <div class="photo-frame">
-            <img src="king.jpg" alt="King Photo" class="photo">
-            <img src="frame.png" alt="Photo Frame" class="frame">
+    <!-- Background with blur effect -->
+    <div class="background"></div>
+
+    <!-- Main content -->
+    <div class="content">
+        <!-- Photo Frames and Emoji Section -->
+        <div class="container">
+            <div class="photo-frame">
+                <img src="king.jpg" alt="King Photo" class="photo">
+                <img src="frame.png" alt="Photo Frame" class="frame">
+            </div>
+
+            <div class="heartbeat">♡</div>
+
+            <div class="photo-frame">
+                <img src="queen.jpg" alt="Queen Photo" class="photo">
+                <img src="frame.png" alt="Photo Frame" class="frame">
+            </div>
         </div>
 
-        <div class="heartbeat">♡</div>
+        <!-- Name Section -->
+        <div class="name-container">
+            <div class="names">King<span class="ampersand">&</span>Queen</div>
+        </div>
 
-        <div class="photo-frame">
-            <img src="queen.jpg" alt="Queen Photo" class="photo">
-            <img src="frame.png" alt="Photo Frame" class="frame">
+        <!-- Relationship Section -->
+        <div class="relation-container">
+            <div class="textline-container">
+                <div class="line"></div>
+                <div class="line-text">Married</div>
+                <div class="line"></div>
+            </div>
         </div>
-    </div>
 
-    <!-- Name Section -->
-    <div class="name-container">
-        <div class="names">King<span class="ampersand">&</span>Queen</div>
-    </div>
+        <!-- Since Date and Countup Section -->
+        <div class="wbt">Since:<span class="date">28 August 2014</span>We have been together for</div>
+        <div class="countup">
+            <div class="countup-box">
+                <div class="countup-label">Years</div>
+                <div class="countup-value" id="years">0</div>
+            </div>
+            <div class="countup-box">
+                <div class="countup-label">Months</div>
+                <div class="countup-value" id="months">0</div>
+            </div>
+            <div class="countup-box">
+                <div class="countup-label">Days</div>
+                <div class="countup-value" id="days">0</div>
+            </div>
+            <div class="countup-box">
+                <div class="countup-label">Hours</div>
+                <div class="countup-value" id="hours">0</div>
+            </div>
+            <div class="countup-box">
+                <div class="countup-label">Minutes</div>
+                <div class="countup-value" id="minutes">0</div>
+            </div>
+            <div class="countup-box">
+                <div class="countup-label">Seconds</div>
+                <div class="countup-value" id="seconds">0</div>
+            </div>
+        </div>
 
-    <!-- Relationship Section -->
-    <div class="relation-container">
-        <div class="textline-container">
-            <div class="line"></div>
-            <div class="line-text">Married</div>
-            <div class="line"></div>
+        <!-- Quote Section -->
+        <div class="quote-container">
+            <div id="quote"></div>
         </div>
-    </div>
-
-    <!-- Since Date and Countup Section -->
-    <div class="wbt">Since:<span class="date">28 August 2014</span>We have been together for</div>
-    <div class="countup">
-        <div class="countup-box">
-            <div class="countup-label">Years</div>
-            <div class="countup-value" id="years">0</div>
-        </div>
-        <div class="countup-box">
-            <div class="countup-label">Months</div>
-            <div class="countup-value" id="months">0</div>
-        </div>
-        <div class="countup-box">
-            <div class="countup-label">Days</div>
-            <div class="countup-value" id="days">0</div>
-        </div>
-        <div class="countup-box">
-            <div class="countup-label">Hours</div>
-            <div class="countup-value" id="hours">0</div>
-        </div>
-        <div class="countup-box">
-            <div class="countup-label">Minutes</div>
-            <div class="countup-value" id="minutes">0</div>
-        </div>
-        <div class="countup-box">
-            <div class="countup-label">Seconds</div>
-            <div class="countup-value" id="seconds">0</div>
-        </div>
-    </div>
-
-    <!-- Quote Section -->
-    <div class="quote-container">
-        <div id="quote"></div>
     </div>
 
     <!-- Scripts -->
